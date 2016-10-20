@@ -1,0 +1,10 @@
+<script>
+  $(function () {
+    country = $('#average_rate').data('country');
+    $.getJSON('/average/calculate_api', {country: country}, function(data) {
+      $('#average_rate').text(data['rate'])
+    })
+  });
+</script>
+<b>Average rate:</b><br/>
+<div id="average_rate" data-country="<%=params[:average][:country] %>"></div>

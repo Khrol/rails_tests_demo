@@ -1,0 +1,20 @@
+<%= form_for :developer, url: { action: "create" } do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :rate %><br>
+      <%= f.text_field :rate %>
+    </p>
+
+    <p>
+      <%= f.label :country %><br>
+      <%= f.text_field :country %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
