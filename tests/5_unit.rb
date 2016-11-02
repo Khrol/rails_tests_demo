@@ -4,14 +4,13 @@ ENV['RAILS_ENV'] ||= 'development'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-class FirstSimple < MiniTest::Test
-
+class FirstSimple < MiniTest::Unit::TestCase
   10000.times do |i|
     define_method "test_average_#{i}" do
       data = [
         ['Belarus', 5],
         ['Belarus', 10],
-        ['Lithuania', 100]
+        ['Ukraine', 100]
       ]
 
       RatesProvider.stub :rates, data do

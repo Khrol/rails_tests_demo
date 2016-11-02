@@ -17,9 +17,9 @@ class FirstSimple < MiniTest::Unit::TestCase
   5.times do |i|
     define_method "test_average_#{i}" do
       driver = Selenium::WebDriver.for :chrome
-      create_developer(driver, 'Kolya', '5', 'Belarus')
-      create_developer(driver, 'Vasya', '10', 'Belarus')
-      create_developer(driver, 'Petya', '100', 'Lithuania')
+      create_developer(driver, 'Vasya', '5', 'Belarus')
+      create_developer(driver, 'Petya', '10', 'Belarus')
+      create_developer(driver, 'Zoya', '100', 'Ukraine')
 
       driver.get('http://localhost:3000/average/rate')
       driver.find_element(id: 'average_country').send_keys('Belarus')

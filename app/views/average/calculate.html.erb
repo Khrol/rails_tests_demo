@@ -1,9 +1,7 @@
+<%= javascript_include_tag 'set_rate' %>
 <script>
   $(function () {
-    country = $('#average_rate').data('country');
-    $.getJSON('/average/calculate_api', {country: country}, function(data) {
-      $('#average_rate').text(data['rate'])
-    })
+    set_rate($('#average_rate'))
   });
 </script>
 <b>Average rate:</b><br/>

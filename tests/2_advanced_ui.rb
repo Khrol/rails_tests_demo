@@ -10,17 +10,22 @@ class FirstSimple < MiniTest::Unit::TestCase
     Developer.create(name: name, rate: rate, country: country)
   end
 
-  100.times do |i|
+  def driver
+    @@driver ||= Selenium::WebDriver.for :chrome
+  end
+
+  10.times do |i|
     define_method "test_average_#{i}" do
       create_developer('Vasya', '5', 'Belarus')
       create_developer('Petya', '10', 'Belarus')
       create_developer('Zoya', '100', 'Ukraine')
 
-      url = 'http://localhost:3000/average/calculate_api?country=Belarus'
-      uri = URI(url)
-      response = Net::HTTP.get(uri)
+      driver.get('http://localhost:3000/average/rate')
+      driver.find_element(id: 'average_country').send_keys('Belarus')
+      driver.find_element(name: 'commit').click
 
-      assert_equal(7.5, JSON.parse(response)['rate'])
+      assert_equal('7.5',
+                   driver.find_element(id: 'average_rate').text)
     end
   end
 end
